@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class TowerUpgradeController : MonoBehaviour
@@ -9,10 +6,10 @@ public class TowerUpgradeController : MonoBehaviour
     //Коэффициент на который повышаются характеристики при апгрейде.
     [SerializeField] private float levelupCoefficient;
 
+    //Евент для визуального эффекта при улучшении башни
     [SerializeField] private UnityEvent upgradeTowerEvent;
     
     private Tower thisTower;
-
     private GoldManager goldManager;
 
     #region MonoBehaviour
@@ -35,11 +32,13 @@ public class TowerUpgradeController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            //Если хватает денег- улучшаем
             if (goldManager.PlayerGold >= thisTower.CostOfUpgrade)
             {
                 UpgradeTower();
             }
             
+            //Если не хватает денег- потрясываем UI
             else if (goldManager.PlayerGold < thisTower.CostOfUpgrade)
             {
                 GameInstance.Instance.upgradeTowerUiController.ShakeUI();

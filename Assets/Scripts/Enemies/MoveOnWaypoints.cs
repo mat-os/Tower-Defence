@@ -3,28 +3,14 @@ using UnityEngine;
 
 public class MoveOnWaypoints : MonoBehaviour
 {
-    //время, за которое враг пройдет путь
-    [SerializeField]private float durationOfPathTravel;
-
     private Enemy thisEnemy;
     
-    #region MonoBehaviour
-    private void OnValidate()
-    {
-        if (durationOfPathTravel < 1)
-        {
-            durationOfPathTravel = 1;
-        }
-    }
-
-
-    #endregion
-
     void Start()
     {
         thisEnemy = gameObject.GetComponent<Enemy>();
         
-        transform.DOPath(WaypointSystem.points, durationOfPathTravel, PathType.Linear, PathMode.TopDown2D)
+        //Движение врага задается через DOTWeen. 
+        transform.DOPath(WaypointSystem.points, thisEnemy.DurationOfPathTravel, PathType.Linear, PathMode.TopDown2D)
             .SetEase(Ease.Linear)
             .SetLookAt(lookAhead: 0)
             .OnComplete(OnPathComplete);

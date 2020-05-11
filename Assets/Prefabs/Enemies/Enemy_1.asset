@@ -16,4 +16,5 @@ MonoBehaviour:
     hp: 2
     damage: 1
     goldOnKill: 1
+    durationOfPathTravel: 10
   enemyGO: {fileID: 7900535376034730761, guid: 1095175ab0e74304eb78f009525cd8eb, type: 3}

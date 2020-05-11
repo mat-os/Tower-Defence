@@ -9,16 +9,19 @@ public class SpawnEnemiesSystem : MonoBehaviour
     [SerializeField]private float timeBetweenEnemies;
 
     [SerializeField]private EnemiesManager enemiesManager;
+    
     //Лист в который добавляются все враги на уровне
     public static readonly List<GameObject> enemiesOnLevel = new List<GameObject>();
+    //Поиск врагов можно было сделать через GameObject.FindWithTag() или через коллайдеры
+    //Но я подумал, что лучше собрать всех врагов в список при спавне
     
     private LevelData thisLevelData;
-
-    private float timer;
-
+    
     private int waveCounter;
     private int enemyCounter;
     private int enemiesOnThisLevel;
+    
+    private float timer;
 
     private bool readyToStartNewWave;
     private bool isNewLevelRoutineStart;
@@ -43,7 +46,7 @@ public class SpawnEnemiesSystem : MonoBehaviour
             if (timer > timeBetweenEnemies)
             {
                 SpawnEnemie();
-
+                
                 timer = 0;
             }
         }
@@ -64,22 +67,27 @@ public class SpawnEnemiesSystem : MonoBehaviour
         waveCounter++;
         
         enemiesOnThisLevel = Random.Range(waveCounter, waveCounter + thisLevelData.MaxRandomEnemiesInWave + 1);
-        
+
         float t = 0;
         while (t < thisLevelData.TimeBetweenWaves)
         {
             t += Time.deltaTime;
-            
+
             yield return null;
         }
 
         enemyCounter = 0;
         readyToStartNewWave = true;
         
-        enemiesManager.UpgradeEnemy();
+        //Улучшение характеристик противников
+        if (waveCounter > 1)
+        {
+            enemiesManager.UpgradeEnemy();
+        }
         
+        //Обновление UI
         GameInstance.Instance.gameplayUiController.UpdateWaveText(waveCounter);
-            
+
         isNewLevelRoutineStart = false;
         StopAllCoroutines();
     }
@@ -96,5 +104,11 @@ public class SpawnEnemiesSystem : MonoBehaviour
         enemiesOnLevel.Add(newEnemy);
         
         enemyCounter++;
+    }
+
+    private void OnDisable()
+    {
+        enemiesOnLevel.Clear();
+        StopAllCoroutines();
     }
 }

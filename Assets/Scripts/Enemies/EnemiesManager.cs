@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemiesManager : MonoBehaviour
 {
@@ -23,7 +21,7 @@ public class EnemiesManager : MonoBehaviour
     }
 
     //Основной метод улучшения противника
-    //Проверяем рандомом, улучшать все характеристики или какую-то одну
+    //Проверяем рандомом улучшать все характеристики или только какую-то одну
     public void UpgradeEnemy()
     {
         var rand = Random.Range(0,2);
@@ -47,7 +45,7 @@ public class EnemiesManager : MonoBehaviour
     //Улучшаем рандомный атрибут противника
     private void UpgradeRandomAttribute()
     {
-        var rand = Random.Range(0, 2);
+        var rand = Random.Range(0, 3);
         switch (rand)
         {
             case 0:
@@ -58,7 +56,12 @@ public class EnemiesManager : MonoBehaviour
             case 1:
                 thisWaveEnemyAttributes.Hp++;
                 
-                gameplayUiController.WriteInConsole("Upgrade enemy hp; Hp now :" + thisWaveEnemyAttributes.Damage);
+                gameplayUiController.WriteInConsole("Upgrade enemy hp; Hp now :" + thisWaveEnemyAttributes.Hp);
+                break;
+            case 2:
+                thisWaveEnemyAttributes.DurationOfPathTravel--;
+                
+                gameplayUiController.WriteInConsole("Upgrade enemy speed");
                 break;
         }
 
@@ -71,6 +74,7 @@ public class EnemiesManager : MonoBehaviour
         thisWaveEnemyAttributes.Damage++;
         thisWaveEnemyAttributes.Hp++;
         thisWaveEnemyAttributes.GoldOnKill++;
+        thisWaveEnemyAttributes.DurationOfPathTravel--;
         
         gameplayUiController.WriteInConsole("All Enemy Attributes Upgraded");
     }

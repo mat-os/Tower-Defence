@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerHPManager : MonoBehaviour
 {
@@ -8,6 +6,7 @@ public class PlayerHPManager : MonoBehaviour
 
     [SerializeField] private GameplayUIController gameplayUiController;
 
+    //текущее здоровье игрока
     private int playerHPamount;
     
     void Start()
@@ -24,7 +23,14 @@ public class PlayerHPManager : MonoBehaviour
 
         if (playerHPamount <= 0)
         {
-            GameInstance.Instance.gameplayManager.GameOver();
+            GameOver();
         }
+    }
+
+    private void GameOver()
+    {
+        GameInstance.Instance.gameOverUiController.EnableGameOverUI();
+            
+        Time.timeScale = 0f;
     }
 }

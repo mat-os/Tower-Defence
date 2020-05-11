@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameInstance : MonoBehaviour
 {
@@ -8,12 +6,10 @@ public class GameInstance : MonoBehaviour
     public GoldManager goldManager;
     public PlayerHPManager playerHpManager;
     
-    [Header("Gameplay Managers")]
-    public GameplayManager gameplayManager;
-    
     [Header("UI Managers")]
     public UpgradeTowerUIController upgradeTowerUiController;
     public GameplayUIController gameplayUiController;
+    public GameOverUIController gameOverUiController;
     
     [Header("Statistic Manager")]
     public StatisticCollector statisticCollector;

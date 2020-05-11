@@ -8,15 +8,20 @@ public class Enemy : MonoBehaviour
     [SerializeField]private float hp;
     [SerializeField]private int damage;
     [SerializeField]private int goldOnKill;
+    [SerializeField]private float durationOfPathTravel;
+    public float DurationOfPathTravel => durationOfPathTravel;
     
     //Здоровье в текущий момент
     private float hpAmount;
 
     public void InitEnemy(EnemyData enemyData)
     {
-        this.hp = enemyData.EnemyAttributes.Hp;
-        this.damage = enemyData.EnemyAttributes.Damage;
-        this.goldOnKill = enemyData.EnemyAttributes.GoldOnKill;
+        var enemyAttributes = enemyData.EnemyAttributes;
+        
+        this.hp = enemyAttributes.Hp;
+        this.damage = enemyAttributes.Damage;
+        this.goldOnKill = enemyAttributes.GoldOnKill;
+        this.durationOfPathTravel = enemyAttributes.DurationOfPathTravel;
 
         hpAmount = hp;
     }

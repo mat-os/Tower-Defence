@@ -1,30 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GoldManager : MonoBehaviour
 {
     [SerializeField] private GameplayUIController gameplayUiController;
-    
-    private int playerGold;
-    public int PlayerGold => playerGold;
 
+    public int PlayerGold { get; private set; }
+
+    void Start()
+    {
+        gameplayUiController.UpdateGoldText(PlayerGold);
+    }
     public void AddGold(int goldAmount)
     {
-        playerGold += goldAmount;
+        PlayerGold += goldAmount;
 
-        gameplayUiController.UpdateGoldText(playerGold);
+        gameplayUiController.UpdateGoldText(PlayerGold);
     }
 
     public void SpendGold(int goldAmount)
     {
-        playerGold -= goldAmount;
+        PlayerGold -= goldAmount;
         
-        gameplayUiController.UpdateGoldText(playerGold);
+        gameplayUiController.UpdateGoldText(PlayerGold);
     }
 
-    void Start()
-    {
-        gameplayUiController.UpdateGoldText(playerGold);
-    }
+
 }

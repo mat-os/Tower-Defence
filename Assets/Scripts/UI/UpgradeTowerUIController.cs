@@ -48,7 +48,8 @@ public class UpgradeTowerUIController : MonoBehaviour
             notEnoughtMoney.SetActive(true);
         }
     }
-
+    
+    //Обновляем текст на UI
     public void UpdateTowerAttributes(Tower tower)
     {
         towerUpgradeUI.UpdateTextField(tower);
@@ -57,6 +58,6 @@ public class UpgradeTowerUIController : MonoBehaviour
     //Эффект тряски UI когда не хватает монеток на улучшение
     public void ShakeUI()
     {
-        towerUpgradeUI.gameObject.transform.DOShakePosition(0.3f, Vector3.forward, 15);
+        towerUpgradeUI.gameObject.transform.DOShakePosition(0.3f, 5, 15);
     }
 }

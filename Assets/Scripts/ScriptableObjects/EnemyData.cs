@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = System.Random;
 
 [CreateAssetMenu(fileName = "New EnemyData", menuName = "Enemy Data", order = 51)]
 public class EnemyData :  ScriptableObject
@@ -31,6 +28,8 @@ public struct EnemyAttributes
     //Сколько золота дают за убийство
     [SerializeField] private int goldOnKill;
 
+    //Время, за которое враг дойдет до конца пути
+    [SerializeField] private float durationOfPathTravel;
     public float Hp
     {
         get => hp;
@@ -47,6 +46,12 @@ public struct EnemyAttributes
     {
         get => goldOnKill;
         set => goldOnKill = value;
+    }
+
+    public float DurationOfPathTravel
+    {
+        get => durationOfPathTravel;
+        set => durationOfPathTravel = value;
     }
 }
 
