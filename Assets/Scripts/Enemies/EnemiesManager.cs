@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//Этот класс хранит и выполняет апгрейд EnemyData. SpawnEnemySystem берет врага для спавна из этого класса.
 public class EnemiesManager : MonoBehaviour
 {
     [SerializeField]private EnemyData enemyData;
