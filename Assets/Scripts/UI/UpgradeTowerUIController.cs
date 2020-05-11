@@ -17,6 +17,8 @@ public class UpgradeTowerUIController : MonoBehaviour
     {
         goldManager = GameInstance.Instance.goldManager;
     }
+    
+    //Показываем или убираем окошко статистики при наведении на баншню
     public void ShowUI(bool isShow)
     {
         switch (isShow)

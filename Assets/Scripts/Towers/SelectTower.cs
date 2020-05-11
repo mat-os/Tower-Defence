@@ -3,9 +3,9 @@
 public class SelectTower : MonoBehaviour
 {
     [SerializeField]private GameObject lightObj;
+    [SerializeField]private GameObject radiusDrawerObj;
     
     private Tower thisTower;
-
     private void Start()
     {
         thisTower = GetComponent<Tower>();
@@ -16,6 +16,7 @@ public class SelectTower : MonoBehaviour
         GameInstance.Instance.upgradeTowerUiController.UpdateTowerAttributes(thisTower);
         
         lightObj.SetActive(true);
+        radiusDrawerObj.SetActive(true);
     }
     private void OnMouseOver()
     {
@@ -27,5 +28,7 @@ public class SelectTower : MonoBehaviour
         GameInstance.Instance.upgradeTowerUiController.ShowUI(false);
         
         lightObj.SetActive(false);
+        radiusDrawerObj.SetActive(false);
+
     }
 }
