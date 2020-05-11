@@ -1,0 +1,1 @@
+{"timeBetweenWaves":5.0,"maxRandomEnemiesInWave":1}
