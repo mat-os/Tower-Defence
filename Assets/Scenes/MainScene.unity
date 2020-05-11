@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2851,7 +2851,7 @@ PrefabInstance:
     - target: {fileID: 2276067626882481345, guid: 72af996d432e6a141bf8b95ae8a30285,
         type: 3}
       propertyPath: m_Name
-      value: Laser Tower (2)
+      value: Laser Tower
       objectReference: {fileID: 0}
     - target: {fileID: 2276067626882481345, guid: 72af996d432e6a141bf8b95ae8a30285,
         type: 3}
@@ -7668,7 +7668,7 @@ PrefabInstance:
     - target: {fileID: 2276067626882481345, guid: 72af996d432e6a141bf8b95ae8a30285,
         type: 3}
       propertyPath: m_Name
-      value: Laser Tower (1)
+      value: Laser Tower
       objectReference: {fileID: 0}
     - target: {fileID: 2276067626882481345, guid: 72af996d432e6a141bf8b95ae8a30285,
         type: 3}
